@@ -53,12 +53,12 @@ def solve_quadratic(a, b, c):
         root2 = complex(real_part, -imaginary_part)
         return root1, root2
 
-# def bad_function():
-# x=1  
-# print("no indent")  
+def bad_function():
+x=1  
+print("no indent")  
 
-# very_long_variable_name_that_is_way_too_long_and_violates_pep8_guidelines_so_much = 1  
+very_long_variable_name_that_is_way_too_long_and_violates_pep8_guidelines_so_much = 1  
 
-# def another_bad_function(  x , y  ):  
-#    unused = 123  
-#    return True
+def another_bad_function(  x , y  ):  
+    unused = 123  
+    return True
