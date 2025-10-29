@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  🔧 test:
+  test:
     name: "🔧 Test"
     runs-on: ubuntu-latest
     steps:
@@ -34,7 +34,7 @@ jobs:
         path: htmlcov/
         retention-days: 30
 
-  📝 lint:
+  lint:
     name: "📝 Lint"
     runs-on: ubuntu-latest
     steps:
@@ -49,7 +49,7 @@ jobs:
     - name: Run flake8 linting
       run: flake8 . --count --show-source --statistics --max-line-length=120 --ignore=E265,E501,W293,W391,E402,E114,W292,E226
 
-  🔒 security:
+  security:
     name: "🔒 Security"
     runs-on: ubuntu-latest
     steps:
@@ -74,10 +74,10 @@ jobs:
           safety_report.json
         retention-days: 30
 
-  📢 notify:
+  notify:
     name: "📢 Notify"
     runs-on: ubuntu-latest
-    needs: [🔧 test, 📝 lint, 🔒 security]
+    needs: [test, lint, security]
     if: always()
     steps:
     - name: Send Telegram notification
