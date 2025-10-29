@@ -54,8 +54,9 @@ if __name__ == '__main__':
     def test_invalid_coefficient_a(self):
         """Test with invalid coefficient a = 0."""
         with self.assertRaises(ValueError):
-          calculate_discriminant(0, 1, 1)
+            calculate_discriminant(0, 1, 1)
 
 def test_failing_test(self):
     self.assertEqual(1, 2)  
+
 
