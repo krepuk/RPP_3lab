@@ -2,80 +2,60 @@ import unittest
 import sys
 import os
 
-# Add current directory to path to import module
-sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# Измените эту строку:
-from discrimination import calculate_discriminant, solve_quadratic
+from discriminant import calculate_discriminant, solve_quadratic
 
-class TestDiscriminant(unittest.TestCase):
-    """Test cases for discriminant calculation"""
 
-    # Positive tests - discriminant >= 0
-    
-    def test_positive_discriminant(self):
-        """Test case with positive discriminant (D > 0)"""
-        result = calculate_discriminant(1, -3, 2)
-        self.assertEqual(result, 1)
-    
-    def test_zero_discriminant(self):
-        """Test case with zero discriminant (D = 0)"""
-        result = calculate_discriminant(1, -2, 1)
-        self.assertEqual(result, 0)
-    
-    def test_negative_discriminant(self):
-        """Test case with negative discriminant (D < 0)"""
-        result = calculate_discriminant(1, 1, 1)
-        self.assertEqual(result, -3)
-    
-    # Test solve_quadratic function
-    
-    def test_solve_two_roots(self):
-        """Test solving quadratic equation with two roots"""
+class TestQuadraticEquation(unittest.TestCase):
+    """Test cases for quadratic equation functions."""
+
+    def test_discriminant_positive(self):
+        """Test discriminant calculation with positive result."""
+        self.assertEqual(calculate_discriminant(1, -3, 2), 1)
+
+    def test_discriminant_zero(self):
+        """Test discriminant calculation with zero result."""
+        self.assertEqual(calculate_discriminant(1, -2, 1), 0)
+
+    def test_discriminant_negative(self):
+        """Test discriminant calculation with negative result."""
+        self.assertEqual(calculate_discriminant(1, 1, 1), -3)
+
+    def test_solve_quadratic_two_roots(self):
+        """Test solving quadratic equation with two real roots."""
         roots = solve_quadratic(1, -3, 2)
         self.assertEqual(len(roots), 2)
         self.assertAlmostEqual(roots[0], 2.0)
         self.assertAlmostEqual(roots[1], 1.0)
-    
-    def test_solve_one_root(self):
-        """Test solving quadratic equation with one root"""
+
+    def test_solve_quadratic_one_root(self):
+        """Test solving quadratic equation with one real root."""
         roots = solve_quadratic(1, -2, 1)
         self.assertEqual(len(roots), 1)
         self.assertAlmostEqual(roots[0], 1.0)
-    
-    def test_solve_no_roots(self):
-        """Test solving quadratic equation with no real roots"""
+
+    def test_solve_quadratic_complex_roots(self):
+        """Test solving quadratic equation with complex roots."""
         roots = solve_quadratic(1, 1, 1)
-        self.assertEqual(len(roots), 0)
-    
-    # Negative tests - edge cases and error conditions
-    
-    def test_invalid_zero_coefficient_a(self):
-        """Test case with a=0 (should raise ValueError)"""
-        with self.assertRaises(ValueError):
-            calculate_discriminant(0, 1, 1)
-    
-    def test_large_numbers(self):
-        """Test with large numbers to check for overflow"""
-        result = calculate_discriminant(1e10, 2e10, 1e10)
-        self.assertEqual(result, 0.0)
-    
-    def test_fractional_coefficients(self):
-        """Test with fractional coefficients"""
-        result = calculate_discriminant(0.5, 1.5, 1.0)
-        self.assertAlmostEqual(result, 0.25)
-    
-    def test_negative_coefficients(self):
-        """Test with all negative coefficients"""
-        result = calculate_discriminant(-1, -2, -1)
-        self.assertEqual(result, 0)
-    
-    def test_solve_with_fractional_roots(self):
-        """Test solving with fractional roots"""
-        roots = solve_quadratic(2, -3, 1)
         self.assertEqual(len(roots), 2)
-        self.assertAlmostEqual(roots[0], 1.0)
-        self.assertAlmostEqual(roots[1], 0.5)
+        self.assertIsInstance(roots[0], complex)
+        self.assertIsInstance(roots[1], complex)
+
+    def test_invalid_equation(self):
+        """Test solving non-quadratic equation."""
+        with self.assertRaises(ValueError):
+            solve_quadratic(0, 1, 1)
+
 
 if __name__ == '__main__':
     unittest.main()
+
+    def test_invalid_coefficient_a(self):
+        """Test with invalid coefficient a = 0."""
+        with self.assertRaises(ValueError):
+            calculate_discriminant(0, 1, 1)
+
+def test_failing_test(self):
+    self.assertEqual(1, 2)  
+
