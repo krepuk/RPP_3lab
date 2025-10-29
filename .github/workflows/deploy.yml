@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    name: "🔧 Test"
+    name: "Test"
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -35,7 +35,7 @@ jobs:
         retention-days: 30
 
   lint:
-    name: "📝 Lint"
+    name: "Lint"
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -50,7 +50,7 @@ jobs:
       run: flake8 . --count --show-source --statistics --max-line-length=120 --ignore=E265,E501,W293,W391,E402,E114,W292,E226
 
   security:
-    name: "🔒 Security"
+    name: "Security"
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -75,7 +75,7 @@ jobs:
         retention-days: 30
 
   notify:
-    name: "📢 Notify"
+    name: "Notify"
     runs-on: ubuntu-latest
     needs: [test, lint, security]
     if: always()
