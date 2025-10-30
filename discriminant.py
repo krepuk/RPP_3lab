@@ -5,15 +5,12 @@ Module for solving quadratic equations.
 def calculate_discriminant(a, b, c):
     """
     Calculate discriminant for quadratic equation.
-
     Args:
         a: Coefficient for x²
         b: Coefficient for x
         c: Constant term
-
     Returns:
         float: Discriminant value
-
     Raises:
         ValueError: If a is zero (not a quadratic equation)
     """
@@ -45,7 +42,7 @@ def solve_quadratic(a, b, c):
         return root1, root2
     elif discriminant == 0:
         root = -b / (2 * a)
-        return(root,) 
+        return (root,)
     else:
         real_part = -b / (2 * a)
         imaginary_part = (-discriminant) ** 0.5 / (2 * a)
