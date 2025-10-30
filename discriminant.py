@@ -45,7 +45,7 @@ def solve_quadratic(a, b, c):
         return root1, root2
     elif discriminant == 0:
         root = -b / (2 * a)
-        return (root,) 
+        return(root,) 
     else:
         real_part = -b / (2 * a)
         imaginary_part = (-discriminant) ** 0.5 / (2 * a)
