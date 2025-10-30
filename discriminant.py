@@ -2,6 +2,7 @@
 Module for solving quadratic equations.
 """
 
+
 def calculate_discriminant(a, b, c):
     """
     Calculate discriminant for quadratic equation.
